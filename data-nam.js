@@ -5,11 +5,6 @@ window.PAGE = {
   title: "Tâm lý <span>Nam giới</span>",
   intro: "Ôn kiến thức về cảm xúc, sức khỏe tâm thần, các mối quan hệ và nền tảng sinh học của nam giới. Mỗi phần là một bộ câu hỏi riêng, sau mỗi câu có giải thích dựa trên nghiên cứu.",
   other: { href: "nu.html", label: "Sang quiz Nữ giới →" },
-  tape: [
-    ["Tự tử", "×2–4"], ["Không có bạn thân", "15%"], ["Trầm cảm ở người cha", "8–10%"], ["Testosterone", "cao nhất buổi sáng"],
-    ["Rối loạn dùng rượu", "×2–3"], ["Khác biệt giới nhỏ", "78%"], ["Vỏ não trước trán", "~25 tuổi"], ["Testosterone sau 30–40", "−1%/năm"],
-    ["Nạn nhân bạo lực gia đình là nam (Anh)", "~1/3"], ["Nghỉ khi cãi nhau", "20 phút"], ["Giao tiếp", "vai kề vai"], ["Đặt tên cảm xúc", "giảm căng thẳng"]
-  ],
   parts: [
     {
       id: "camxuc", title: "Cảm xúc & biểu hiện", desc: "Nam giới cảm nhận, che giấu và thể hiện cảm xúc như thế nào.",

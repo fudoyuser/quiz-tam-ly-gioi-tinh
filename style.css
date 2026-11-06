@@ -44,14 +44,9 @@ a { color: var(--accent); }
 h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
 .label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 
-/* Băng chữ chạy */
-.tape { margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); border-bottom: 1px solid var(--line); background: var(--card); overflow: hidden; white-space: nowrap; }
-.tape-track { display: inline-flex; gap: 32px; padding: 9px 0; animation: run 90s linear infinite; font-family: var(--mono); font-size: 13px; color: var(--muted); }
-.tape-track b { margin-right: 6px; font-weight: 700; }
-@keyframes run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* Đầu trang */
-.mast { display: grid; gap: 12px; padding-top: 24px; }
+.mast { display: grid; gap: 12px; padding-top: 28px; }
 .mast-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .nav { display: flex; gap: 14px; flex-wrap: wrap; font-size: 14px; }
 .nav a { color: var(--muted); text-decoration: none; }
@@ -157,4 +152,4 @@ button.stat:hover { border-color: var(--muted); }
 .pick .parts-list span { font-family: var(--mono); font-size: 11px; border: 1px solid var(--line); border-radius: 99px; padding: 1px 9px; color: var(--muted); }
 .pick .go-link { color: var(--c1); font-weight: 700; }
 footer { text-align: center; font-size: 13px; color: var(--muted); }
-@media (prefers-reduced-motion: reduce) { .tape-track { animation: none; } * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

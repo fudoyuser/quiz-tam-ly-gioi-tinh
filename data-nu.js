@@ -5,11 +5,6 @@ window.PAGE = {
   title: "Tâm lý <span>Nữ giới</span>",
   intro: "Ôn kiến thức về hormone và cơ thể, sức khỏe tâm thần, công việc, xã hội và các mối quan hệ của nữ giới. Mỗi phần là một bộ câu hỏi riêng, sau mỗi câu có giải thích dựa trên nghiên cứu.",
   other: { href: "nam.html", label: "Sang quiz Nam giới →" },
-  tape: [
-    ["Trầm cảm, lo âu", "×2"], ["PMDD", "3–8%"], ["Baby blues", "tới 80%"], ["Trầm cảm sau sinh", "10–15%"],
-    ["PTSD sau sang chấn", "×2"], ["Việc chăm sóc không lương", "×3"], ["Ly hôn do nữ đề nghị (Mỹ)", "~69%"], ["Mất ngủ", "+40%"],
-    ["Vách đá kính", "lãnh đạo lúc khủng hoảng"], ["Hội chứng kẻ mạo danh", "1978"], ["Chăm sóc & kết bạn", "Taylor 2000"], ["Gánh nặng vô hình", "mental load"]
-  ],
   parts: [
     {
       id: "hormone", title: "Hormone & cơ thể", desc: "Chu kỳ kinh nguyệt, thai sản, mãn kinh và tác động lên tâm trạng.",

@@ -6,7 +6,6 @@ HEAD='<meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@500;700;800&display=swap">
 <link rel="stylesheet" href="style.css">'
-TOP='<div class="tape" aria-hidden="true"><div class="tape-track" id="tape"></div></div>'
 page() { # file key title desc
 cat > $1 <<EOF
 <!doctype html>
@@ -17,7 +16,6 @@ cat > $1 <<EOF
 $HEAD
 </head>
 <body class="$2">
-$TOP
 <main class="wrap">
   <header class="mast">
     <div class="mast-top">
@@ -117,7 +115,6 @@ cat > index.html <<EOF
 $HEAD
 </head>
 <body>
-$TOP
 <main class="wrap">
   <header class="mast">
     <div class="mast-top">
@@ -152,7 +149,6 @@ $TOP
   <p class="note">Lưu ý: kết quả nghiên cứu mô tả xu hướng trung bình của nhóm. Khác biệt giữa các cá nhân luôn lớn hơn khác biệt giữa hai giới, nên đừng dùng chúng để gán nhãn một người cụ thể.</p>
   <footer>Quiz Tâm Lý Giới Tính · Chỉ để ôn tập và tham khảo</footer>
 </main>
-<script>window.HOME_TAPE=[["Quiz Nam","32 câu"],["Quiz Nữ","32 câu"],["Khác biệt giới nhỏ","78%"],["Tự tử ở nam","×2–4"],["Trầm cảm ở nữ","×2"],["Bạn thân","vai kề vai"],["Tình bạn nữ","mặt đối mặt"],["Gánh nặng vô hình","mental load"],["Não bộ","bức khảm"],["Đặt tên cảm xúc","giảm căng thẳng"]];</script>
 <script src="app.js"></script>
 </body>
 </html>

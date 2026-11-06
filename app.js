@@ -68,16 +68,8 @@
   }
   renderStats();
 
-  /* ===== Băng chữ chạy ===== */
-  function tape(items) {
-    const colors = ["var(--up)", "var(--accent)", "var(--ref)", "var(--alt)"];
-    const html = shuffle(items).map(([k, v], i) => `<span><b style="color:${colors[i % colors.length]}">${esc(k)}</b>${esc(v)}</span>`).join("");
-    $("tape").innerHTML = html + html;
-  }
-
   /* ===== Trang chủ ===== */
   if (!window.PAGE) {
-    tape(window.HOME_TAPE || []);
     document.querySelectorAll("[data-home]").forEach(el => {
       const key = el.dataset.home, parts = el.dataset.parts.split(",");
       const best = parts.map(p => +store.get(`tlgt-${key}-${p}-best`) || 0);
@@ -98,7 +90,6 @@
 
   $("mastLabel").textContent = PG.label; $("mastTitle").innerHTML = PG.title; $("mastIntro").textContent = PG.intro;
   $("otherLink").href = PG.other.href; $("otherLink").textContent = PG.other.label;
-  tape(PG.tape);
 
   const fromHash = () => PART[location.hash.slice(1)];
   let part = (fromHash() || PART[store.get(`tlgt-${K}-part`)] || PARTS[0]).id;
