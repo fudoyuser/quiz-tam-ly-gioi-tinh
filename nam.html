@@ -1,28 +1,99 @@
 <!doctype html>
-<html lang="vi"><head>
+<html lang="vi">
+<head>
 <title>Quiz Tâm Lý Nam Giới</title>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Quiz 32 câu về cảm xúc, sức khỏe tâm thần, các mối quan hệ và sinh học của nam giới.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@500;700;800&display=swap">
 <link rel="stylesheet" href="style.css">
-</head><body class="nam">
+</head>
+<body class="nam">
+<div class="tape" aria-hidden="true"><div class="tape-track" id="tape"></div></div>
 <main class="wrap">
-  <nav class="nav"><a href="index.html">← Trang chủ</a><a href="nam.html" aria-current="page">Quiz nam</a><a href="nu.html">Quiz nữ</a></nav>
-  <header><p class="eyebrow">Quiz · Nam giới</p><h1>Bạn hiểu tâm lý nam giới đến đâu?</h1><p class="lead">10 câu hỏi về cảm xúc, căng thẳng và những áp lực vô hình mà nam giới thường mang theo.</p></header>
-  <section id="quiz" aria-live="polite"></section>
-  <p class="note">Nội dung mang tính giáo dục, không thay thế tư vấn chuyên môn. Nếu bạn hoặc người thân đang gặp khủng hoảng tâm lý, hãy tìm đến chuyên gia tâm lý hoặc cơ sở y tế gần nhất.</p>
+  <header class="mast">
+    <div class="mast-top">
+      <nav class="nav"><a href="index.html">← Trang chủ</a><a href="nam.html" aria-current="page">Quiz Nam</a><a href="nu.html">Quiz Nữ</a></nav>
+      <button class="theme" id="themeBtn" type="button">Giao diện: Tự động</button>
+    </div>
+    <span class="label" id="mastLabel"></span>
+    <h1 id="mastTitle"></h1>
+    <p id="mastIntro"></p>
+  </header>
+
+  <section class="stats" id="stats" aria-label="Thống kê học tập"></section>
+  <p class="save-note">💾 Tiến độ lưu trên trình duyệt này, dùng chung cho quiz Nam và quiz Nữ.</p>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <nav class="parts" id="parts" role="tablist" aria-label="Chọn phần"></nav>
+
+  <section class="panel" id="setup">
+    <div class="panel-head">
+      <span class="label" id="setupLabel"></span>
+      <h2 id="setupTitle"></h2>
+      <p class="note" id="setupDesc"></p>
+    </div>
+    <div class="field">
+      <span class="label">Số câu mỗi lượt</span>
+      <div class="chips" id="lengths"></div>
+      <p class="note" id="countNote"></p>
+    </div>
+    <button class="go" id="startBtn" type="button">Bắt đầu</button>
+  </section>
+
+  <section class="panel" id="play" hidden>
+    <div class="hud">
+      <span class="label" id="hudPos"></span>
+      <span class="label" id="hudScore"></span>
+    </div>
+    <div class="bar"><i id="hudBar"></i></div>
+    <div class="prompt">
+      <span class="label" id="qLabel"></span>
+      <div class="big" id="qMain"></div>
+    </div>
+    <div class="opts" id="opts"></div>
+    <div class="explain" id="explain" hidden></div>
+    <div class="actions">
+      <button class="go" id="nextBtn" type="button" hidden>Câu tiếp →</button>
+      <button class="ghost" id="quitBtn" type="button">Dừng</button>
+      <span class="hint">Phím tắt: 1–4 để chọn, Enter để sang câu</span>
+    </div>
+  </section>
+
+  <section class="panel" id="result" hidden>
+    <span class="label" id="rLabel"></span>
+    <div class="score" id="rScore"></div>
+    <p id="rMsg" style="margin:0"></p>
+    <p class="note" id="rTotal"></p>
+    <div class="review" id="rReview"></div>
+    <div class="actions">
+      <button class="go" id="retryBtn" type="button" hidden>Ôn lại câu sai</button>
+      <button class="go" id="againBtn" type="button">Chơi lại</button>
+      <button class="ghost" id="setupBtn" type="button">Đổi thiết lập</button>
+      <a class="ghost" id="otherLink" href="#"></a>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <span class="label" id="boardLabel">Bảng tra cứu</span>
+      <h2>Ôn lại trước khi chơi</h2>
+    </div>
+    <input class="search" id="search" type="search" placeholder="Tìm theo từ khóa, ví dụ: hormone, trầm cảm…" aria-label="Tìm trong bảng tra cứu">
+    <div class="board-wrap">
+      <table class="board">
+        <thead><tr><th>Câu hỏi</th><th>Đáp án và giải thích</th></tr></thead>
+        <tbody id="boardBody"></tbody>
+      </table>
+    </div>
+    <p class="note">Nội dung mang tính giáo dục, mô tả xu hướng trung bình của nhóm; khác biệt giữa các cá nhân luôn lớn hơn khác biệt giữa hai giới. Không thay thế tư vấn chuyên môn. Nếu bạn hoặc người thân đang gặp khủng hoảng tâm lý, hãy tìm đến chuyên gia hoặc cơ sở y tế gần nhất.</p>
+  </section>
+
+  <footer>Quiz Tâm Lý Giới Tính · Quiz Tâm Lý Nam Giới · Chỉ để ôn tập và tham khảo</footer>
 </main>
-<script>window.OTHER={href:"nu.html",label:"Làm quiz nữ giới →"};window.QUIZ=[
-{q:"Trầm cảm ở nam giới thường biểu hiện ra bên ngoài như thế nào?",a:["Khóc nhiều và buồn bã rõ rệt","Cáu gắt, nóng giận, làm việc quá sức hoặc dùng rượu bia","Luôn tìm người tâm sự","Hầu như không bao giờ xảy ra"],c:1,e:"Nam giới hay biểu hiện trầm cảm qua cáu gắt, giận dữ, hành vi liều lĩnh hoặc lạm dụng chất. Vì không giống hình ảnh buồn bã quen thuộc nên trầm cảm ở nam dễ bị bỏ sót."},
-{q:"So với nữ giới, tỷ lệ tử vong do tự tử ở nam giới trên thế giới thế nào?",a:["Thấp hơn khoảng một nửa","Gần như bằng nhau","Cao hơn khoảng 2–4 lần tùy quốc gia","Chỉ cao hơn ở người già"],c:2,e:"Theo WHO, nam giới tử vong do tự tử nhiều hơn nữ giới khoảng 2 lần trên toàn cầu, và 3–4 lần ở nhiều nước phát triển, dù nữ giới có ý định tự tử nhiều hơn. Điều này liên quan đến việc ít tìm trợ giúp và chọn phương thức nguy hiểm hơn."},
-{q:"Lý do phổ biến nhất khiến nam giới ngại tìm kiếm hỗ trợ tâm lý là gì?",a:["Nam giới ít gặp vấn đề tâm lý","Chuẩn mực \"đàn ông phải mạnh mẽ, tự giải quyết\"","Chi phí quá cao","Không có chuyên gia dành cho nam"],c:1,e:"Nghiên cứu về chuẩn mực nam tính cho thấy niềm tin \"xin giúp đỡ là yếu đuối\" là rào cản lớn nhất. Nam giới càng tin vào chuẩn mực này càng ít đi trị liệu."},
-{q:"Nhiều nam giới cảm thấy dễ mở lòng nhất trong hoàn cảnh nào?",a:["Ngồi đối diện, nhìn thẳng vào mắt nhau","Khi được hỏi dồn dập về cảm xúc","Khi cùng làm một việc bên cạnh nhau (lái xe, chơi thể thao, sửa đồ)","Qua tin nhắn dài"],c:2,e:"Các nhà nghiên cứu gọi đây là giao tiếp \"vai kề vai\" (side-by-side). Hoạt động chung giảm áp lực giao tiếp trực diện nên chuyện khó nói dễ được chia sẻ hơn."},
-{q:"Testosterone ảnh hưởng đến hành vi nam giới như thế nào?",a:["Quyết định hoàn toàn mức độ hung hăng","Không ảnh hưởng gì","Có ảnh hưởng, nhưng tác động phụ thuộc mạnh vào bối cảnh xã hội","Chỉ ảnh hưởng đến cơ bắp"],c:2,e:"Testosterone liên quan đến động lực cạnh tranh và tìm kiếm vị thế, nhưng biểu hiện cụ thể (hung hăng hay hào phóng) tùy vào điều được xã hội xung quanh đánh giá cao. Hormone không phải định mệnh."},
-{q:"Nam giới có thể bị trầm cảm sau khi vợ/bạn đời sinh con không?",a:["Không, chỉ người mẹ mới bị","Có, khoảng 8–10% người cha","Chỉ khi người cha thất nghiệp","Chỉ ở con thứ hai"],c:1,e:"Phân tích tổng hợp (Paulson & Bazemore, 2010) cho thấy khoảng 8–10% người cha bị trầm cảm chu sinh, cao nhất khi con 3–6 tháng tuổi. Nguy cơ tăng nếu người mẹ cũng bị trầm cảm."},
-{q:"Về trải nghiệm cảm xúc bên trong, nam và nữ khác nhau thế nào?",a:["Nam giới cảm nhận cảm xúc yếu hơn hẳn","Mức độ cảm nhận khá tương đồng; khác biệt chủ yếu ở cách thể hiện","Nam giới không cảm thấy sợ hãi","Nữ giới không cảm thấy tức giận"],c:1,e:"Đo phản ứng sinh lý cho thấy nam giới cũng phản ứng mạnh với kích thích cảm xúc. Từ nhỏ con trai thường được dạy \"con trai không được khóc\", nên các em học cách che giấu cảm xúc chứ không phải ít cảm nhận hơn."},
-{q:"\"Giả thuyết tương đồng giới\" (Janet Hyde, 2005) kết luận điều gì?",a:["Nam và nữ khác nhau ở hầu hết đặc điểm tâm lý","Phần lớn khác biệt tâm lý giữa hai giới là nhỏ hoặc gần bằng không","Nam giới giỏi toán bẩm sinh","Nữ giới luôn đồng cảm hơn"],c:1,e:"Tổng hợp 46 phân tích gộp, Hyde thấy khoảng 78% khác biệt giới có quy mô nhỏ hoặc gần bằng 0. Một số khác biệt lớn hơn như sức mạnh thể chất và một số hành vi hung hăng."},
-{q:"Khi một người bạn nam đang căng thẳng, cách hỗ trợ nào thường hiệu quả?",a:["Ép anh ấy nói ra ngay lập tức","Phớt lờ để anh ấy tự vượt qua","Ở bên, rủ làm việc gì đó cùng và để ngỏ cơ hội trò chuyện","Khuyên \"đàn ông thì phải chịu được\""],c:2,e:"Hiện diện, không phán xét và tạo không gian an toàn giúp nam giới dễ chia sẻ hơn. Câu như \"phải chịu được\" củng cố chính chuẩn mực ngăn họ tìm trợ giúp."},
-{q:"Cô đơn ở nam giới trưởng thành thường liên quan đến điều gì?",a:["Nam giới không cần bạn bè","Tình bạn của nam thường gắn với hoạt động chung, dễ mai một khi hoàn cảnh thay đổi (cưới, chuyển việc)","Nam giới có nhiều bạn thân hơn nữ","Chỉ người độc thân mới cô đơn"],c:1,e:"Khảo sát tại Mỹ (2021) cho thấy tỷ lệ nam giới không có người bạn thân nào tăng từ 3% (1990) lên 15%. Tình bạn dựa trên hoạt động chung dễ đứt khi lịch sinh hoạt thay đổi, và nhiều nam giới chỉ còn dựa vào bạn đời để chia sẻ."}
-];</script>
-<script src="quiz.js"></script>
-</body></html>
+<script src="data-nam.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
