@@ -56,6 +56,7 @@ $HEAD
     <div class="prompt">
       <span class="label" id="qLabel"></span>
       <div class="big" id="qMain"></div>
+      <span class="src" id="qSrc" hidden>Nguồn: blog Chính Em (chinhem.com)</span>
     </div>
     <div class="opts" id="opts"></div>
     <div class="explain" id="explain" hidden></div>
@@ -104,7 +105,7 @@ $HEAD
 EOF
 }
 page nam.html nam "Quiz Tâm Lý Nam Giới" "Quiz 32 câu về cảm xúc, sức khỏe tâm thần, các mối quan hệ và sinh học của nam giới."
-page nu.html nu "Quiz Tâm Lý Nữ Giới" "Quiz 104 câu về tín hiệu tình cảm, chủ đề trò chuyện, thói quen, hẹn hò, hormone, sức khỏe tâm thần và các mối quan hệ của nữ giới, kèm phần góc nhìn blog Chính Em."
+page nu.html nu "Quiz Tâm Lý Nữ Giới" "Quiz 104 câu về tín hiệu tình cảm, chủ đề trò chuyện, thói quen, hẹn hò, hormone, sức khỏe tâm thần và các mối quan hệ của nữ giới, có ghi nguồn câu hỏi."
 
 cat > index.html <<EOF
 <!doctype html>
@@ -122,7 +123,7 @@ $HEAD
       <button class="theme" id="themeBtn" type="button">Giao diện: Tự động</button>
     </div>
     <h1>Quiz Tâm Lý <span>Giới Tính</span></h1>
-    <p>Hai bộ quiz dựa trên các nghiên cứu tâm lý học. Quiz Nam có 4 phần (32 câu), quiz Nữ có 8 phần dựa trên nghiên cứu (79 câu) và 1 phần theo góc nhìn blog Chính Em (25 câu), kèm phần tổng hợp. Sau mỗi câu có giải thích ngắn để bạn hiểu vì sao.</p>
+    <p>Hai bộ quiz dựa trên các nghiên cứu tâm lý học. Quiz Nam có 4 phần (32 câu), quiz Nữ có 9 phần (104 câu, trong đó 25 câu lấy từ blog Chính Em và có ghi nguồn), kèm phần tổng hợp. Sau mỗi câu có giải thích ngắn để bạn hiểu vì sao.</p>
   </header>
 
   <section class="stats" id="stats" aria-label="Thống kê học tập"></section>
@@ -137,10 +138,10 @@ $HEAD
       <span class="meta"></span>
       <span class="go-link">Vào quiz Nam →</span>
     </a>
-    <a class="pick nu" href="nu.html" data-home="nu" data-parts="tinhieu,tamsu,thoiquen,henho,hormone,suckhoe,xahoi,quanhe,chinhem,tonghop">
+    <a class="pick nu" href="nu.html" data-home="nu" data-parts="tinhieu,tamsu,thoiquen,henho,thuhut,hormone,suckhoe,xahoi,quanhe,tonghop">
       <span class="sym">♀</span><h2>Tâm lý Nữ giới</h2>
       <p>Tín hiệu tình cảm, chủ đề trò chuyện, thói quen, hẹn hò, hormone và tâm trạng, gánh nặng vô hình, tình bạn.</p>
-      <span class="parts-list"><span>Tín hiệu tình cảm</span><span>Chủ đề trò chuyện</span><span>Thói quen</span><span>Hẹn hò</span><span>Hormone</span><span>Sức khỏe tâm thần</span><span>Công việc & xã hội</span><span>Mối quan hệ</span><span>Góc nhìn blog Chính Em</span></span>
+      <span class="parts-list"><span>Tín hiệu tình cảm</span><span>Chủ đề trò chuyện</span><span>Thói quen</span><span>Hẹn hò</span><span>Hormone</span><span>Sức khỏe tâm thần</span><span>Công việc & xã hội</span><span>Mối quan hệ</span><span>Thu hút & bài test</span></span>
       <span class="meta"></span>
       <span class="go-link">Vào quiz Nữ →</span>
     </a>
