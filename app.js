@@ -81,9 +81,9 @@
 
   /* ===== Trang quiz ===== */
   const PG = window.PAGE, K = PG.key;
-  const all = PG.parts.flatMap(p => p.items.map(it => ({ ...it, from: p.title })));
+  const all = PG.parts.filter(p => !p.noMix).flatMap(p => p.items.map(it => ({ ...it, from: p.title })));
   const PARTS = [...PG.parts.map((p, i) => ({ ...p, num: "Phần " + (i + 1), ci: i + 1 })),
-    { id: "tonghop", title: "Tổng hợp", desc: "Trộn ngẫu nhiên câu hỏi từ tất cả các phần.", items: all, num: "Tổng hợp", ci: PG.parts.length + 1 }];
+    { id: "tonghop", title: "Tổng hợp", desc: PG.parts.some(p => p.noMix) ? "Trộn ngẫu nhiên câu hỏi từ các phần dựa trên nghiên cứu." : "Trộn ngẫu nhiên câu hỏi từ tất cả các phần.", items: all, num: "Tổng hợp", ci: PG.parts.length + 1 }];
   const PART = Object.fromEntries(PARTS.map(p => [p.id, p]));
   const LENGTHS = [10, 20, 30, 50, "all"];
   const L = "ABCD";
@@ -174,7 +174,7 @@
     });
     const ex = $("explain");
     ex.className = "explain" + (ok ? "" : " bad");
-    ex.innerHTML = `<b class="t">${ok ? "Chính xác!" : "Chưa đúng · Đáp án " + L[q.ans]}</b><p>${esc(q.e)}</p>`;
+    ex.innerHTML = `<b class="t">${ok ? "Chính xác!" : "Chưa đúng · Đáp án " + L[q.ans]}</b><p>${esc(q.e)}</p>${q.n ? `<p class="sci"><b>Góc nhìn nghiên cứu:</b> ${esc(q.n)}</p>` : ""}`;
     ex.hidden = false;
     $("hudScore").textContent = hudText();
     $("nextBtn").textContent = g.i + 1 < g.items.length ? "Câu tiếp →" : "Xem kết quả";
@@ -225,9 +225,9 @@
   function renderBoard() {
     const P = PART[part], qy = norm($("search").value.trim());
     $("boardLabel").textContent = `Bảng tra cứu · ${P.num}: ${P.title}`;
-    const rows = P.items.filter(it => !qy || norm(it.q + " " + it.a[it.c] + " " + it.e).includes(qy));
+    const rows = P.items.filter(it => !qy || norm(it.q + " " + it.a[it.c] + " " + it.e + " " + (it.n || "")).includes(qy));
     $("boardBody").innerHTML = rows.length
-      ? rows.map(it => `<tr><td>${esc(it.q)}</td><td><b>${esc(it.a[it.c])}</b><small>${esc(it.e)}</small></td></tr>`).join("")
+      ? rows.map(it => `<tr><td>${esc(it.q)}</td><td><b>${esc(it.a[it.c])}</b><small>${esc(it.e)}</small>${it.n ? `<small class="sci"><b>Góc nhìn nghiên cứu:</b> ${esc(it.n)}</small>` : ""}</td></tr>`).join("")
       : `<tr><td colspan="2" class="empty">Không tìm thấy câu nào khớp với từ khóa.</td></tr>`;
   }
   $("search").oninput = renderBoard;
