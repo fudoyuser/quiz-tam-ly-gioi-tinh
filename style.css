@@ -1,31 +1,31 @@
 /* Bố cục: một cột 780px như bảng ôn tập; băng chữ chạy trên cùng, ô thống kê, lưới chọn phần, khung chơi, bảng tra cứu.
-   Màu nhấn đổi theo phần đang chọn (--c1..--c5); trang Nam tông xanh, trang Nữ tông hồng mận. */
+   Màu nhấn đổi theo phần đang chọn (--c1..--c9); trang Nam tông xanh, trang Nữ tông hồng mận. */
 :root {
   --bg: #f4f5f7; --card: #ffffff; --opt: #f7f8fa; --ink: #15181d; --muted: #5d6470; --line: #dde1e7;
   --up: #1d8a55; --up-soft: #dcf2e6; --down: #c93c3c; --down-soft: #fbe3e1; --ref: #a87b00; --alt: #6d4fc2;
-  --c1: #2f5d8a; --c2: #1f7f8f; --c3: #4a5fc1; --c4: #2e7d5b; --c5: #5a4fa3;
+  --c1: #2f5d8a; --c2: #1f7f8f; --c3: #4a5fc1; --c4: #2e7d5b; --c5: #5a4fa3; --c6: #8a6a12; --c7: #2b6f9e; --c8: #3e6e2e; --c9: #6b4fb8;
   --accent: var(--c1); --accent-ink: #ffffff;
   --display: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
 }
-body.nu, .pick.nu { --c1: #a4466b; --c2: #b2552f; --c3: #8a3f8f; --c4: #b23a55; --c5: #7a4a9a; --accent: var(--c1); }
+body.nu, .pick.nu { --c1: #a4466b; --c2: #b2552f; --c3: #8a3f8f; --c4: #b23a55; --c5: #7a4a9a; --c6: #9c4221; --c7: #8e3b8e; --c8: #b03a5b; --c9: #6a4fa3; --accent: var(--c1); }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0e1013; --card: #171a1f; --opt: #1d2127; --ink: #e9ebef; --muted: #98a0ab; --line: #2a2f37;
     --up: #4fd18c; --up-soft: #143024; --down: #ff7a72; --down-soft: #3a1b1a; --ref: #f2c230; --alt: #b49bff;
-    --c1: #7fb0e3; --c2: #5fd0dc; --c3: #98a8ff; --c4: #6fd6a2; --c5: #b6a6ff; --accent-ink: #0b0f14;
+    --c1: #7fb0e3; --c2: #5fd0dc; --c3: #98a8ff; --c4: #6fd6a2; --c5: #b6a6ff; --c6: #e6c27a; --c7: #7ec4ff; --c8: #9fd67e; --c9: #c7a0ff; --accent-ink: #0b0f14;
     color-scheme: dark;
   }
-  :root:not([data-theme="light"]) body.nu, :root:not([data-theme="light"]) .pick.nu { --c1: #f08fb4; --c2: #ffa07a; --c3: #e09ae6; --c4: #ff8fa6; --c5: #c9a2f0; }
+  :root:not([data-theme="light"]) body.nu, :root:not([data-theme="light"]) .pick.nu { --c1: #f08fb4; --c2: #ffa07a; --c3: #e09ae6; --c4: #ff8fa6; --c5: #c9a2f0; --c6: #ff9f7a; --c7: #e48ee4; --c8: #ff8fb0; --c9: #c7a0ff; }
 }
 :root[data-theme="dark"] {
   --bg: #0e1013; --card: #171a1f; --opt: #1d2127; --ink: #e9ebef; --muted: #98a0ab; --line: #2a2f37;
   --up: #4fd18c; --up-soft: #143024; --down: #ff7a72; --down-soft: #3a1b1a; --ref: #f2c230; --alt: #b49bff;
-  --c1: #7fb0e3; --c2: #5fd0dc; --c3: #98a8ff; --c4: #6fd6a2; --c5: #b6a6ff; --accent-ink: #0b0f14;
+  --c1: #7fb0e3; --c2: #5fd0dc; --c3: #98a8ff; --c4: #6fd6a2; --c5: #b6a6ff; --c6: #e6c27a; --c7: #7ec4ff; --c8: #9fd67e; --c9: #c7a0ff; --accent-ink: #0b0f14;
   color-scheme: dark;
 }
-:root[data-theme="dark"] body.nu, :root[data-theme="dark"] .pick.nu { --c1: #f08fb4; --c2: #ffa07a; --c3: #e09ae6; --c4: #ff8fa6; --c5: #c9a2f0; }
+:root[data-theme="dark"] body.nu, :root[data-theme="dark"] .pick.nu { --c1: #f08fb4; --c2: #ffa07a; --c3: #e09ae6; --c4: #ff8fa6; --c5: #c9a2f0; --c6: #ff9f7a; --c7: #e48ee4; --c8: #ff8fb0; --c9: #c7a0ff; }
 
 * { box-sizing: border-box; }
 html { background: var(--bg); }

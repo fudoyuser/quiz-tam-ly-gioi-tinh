@@ -83,9 +83,9 @@
   const PG = window.PAGE, K = PG.key;
   const all = PG.parts.flatMap(p => p.items.map(it => ({ ...it, from: p.title })));
   const PARTS = [...PG.parts.map((p, i) => ({ ...p, num: "Phần " + (i + 1), ci: i + 1 })),
-    { id: "tonghop", title: "Tổng hợp", desc: "Trộn ngẫu nhiên câu hỏi từ tất cả các phần.", items: all, num: "Tổng hợp", ci: 5 }];
+    { id: "tonghop", title: "Tổng hợp", desc: "Trộn ngẫu nhiên câu hỏi từ tất cả các phần.", items: all, num: "Tổng hợp", ci: PG.parts.length + 1 }];
   const PART = Object.fromEntries(PARTS.map(p => [p.id, p]));
-  const LENGTHS = [10, 20, "all"];
+  const LENGTHS = [10, 20, 30, 50, "all"];
   const L = "ABCD";
 
   $("mastLabel").textContent = PG.label; $("mastTitle").innerHTML = PG.title; $("mastIntro").textContent = PG.intro;
